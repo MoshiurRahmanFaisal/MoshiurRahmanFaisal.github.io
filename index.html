@@ -52,16 +52,22 @@
   .nav-cta:hover{box-shadow:var(--shadow-md); transform:translateY(-1px);}
 
   .hero{padding:100px 0 64px; position:relative;}
-  .hero-grid{display:grid; grid-template-columns:1fr 260px; gap:64px; align-items:start;}
+  .hero-grid{display:flex; gap:56px; align-items:flex-start;}
+  .hero-text{flex:1 1 auto; min-width:0;}
+  .hero-photo{flex:0 0 260px; width:260px;}
   @media(max-width:760px){
-    .hero-grid{grid-template-columns:1fr; gap:36px;}
-    .hero-photo{order:-1; width:148px;}
+    .hero-grid{flex-direction:column-reverse; gap:28px;}
+    .hero-photo{width:200px; margin:0 auto;}
+  }
+  .hero-photo{position:relative;}
+  .hero-photo::before{
+    content:""; position:absolute; inset:6% 2% 0 2%; border-radius:50% 50% 42% 42% / 55% 55% 45% 45%;
+    background:linear-gradient(160deg, var(--bg-soft) 0%, var(--line) 100%); z-index:0;
   }
   .hero-photo img{
-    width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
-    border-radius:14px; border:1px solid var(--line);
-    filter:grayscale(8%) contrast(1.02);
-    box-shadow:var(--shadow-md);
+    position:relative; z-index:1; display:block;
+    width:100%; height:auto; max-height:340px; object-fit:contain;
+    filter:contrast(1.03);
   }
   .eyebrow{
     font-family:var(--sans); font-size:13px; font-weight:600; letter-spacing:.04em;
@@ -232,7 +238,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="assets/profile.jpg" alt="Portrait of Moshiur Rahman Faisal">
+        <img src="assets/profile.png" alt="Portrait of Moshiur Rahman Faisal">
       </div>
     </div>
   </section>
