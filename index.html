@@ -43,11 +43,9 @@
 
   header{position:sticky; top:0; z-index:50; background:rgba(247,247,245,.85); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
   .navrow{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
-  .mark{font-family:var(--disp); font-weight:600; font-size:15px; display:flex; align-items:center; gap:8px;}
-  .mark .dot{width:8px; height:8px; border-radius:50%; background:var(--accent-grad);}
-  nav ul{list-style:none; display:flex; gap:30px; font-size:13.5px; font-weight:500;}
-  nav a{color:var(--text-soft); transition:color .2s;}
-  nav a:hover{color:var(--text);}
+  .mark{font-family:var(--disp); font-weight:600; font-size:15px; display:flex; align-items:center; gap:8px; color:var(--text); text-decoration:none;}
+  .mark:hover{color:var(--accent);}
+  .mark .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); flex-shrink:0;}
   .nav-cta{font-size:13px; font-weight:600; padding:9px 18px; border-radius:99px; background:var(--accent-grad); color:#ffffff; box-shadow:var(--shadow-sm); transition:box-shadow .2s, transform .2s;}
   .nav-cta:hover{box-shadow:var(--shadow-md); transform:translateY(-1px);}
 
@@ -98,18 +96,35 @@
   h2{font-family:var(--disp); font-weight:600; font-size:clamp(24px,3vw,34px); margin-bottom:40px; max-width:20ch; letter-spacing:-.01em;}
 
   .layout{max-width:1040px; margin:0 auto; padding:0 28px;}
-  .section-bar-wrap{border-top:1px solid var(--line); background:var(--bg-soft);}
+  .section-bar-wrap{border-top:1px solid var(--line); background:var(--bg-soft); overflow-x:auto; scrollbar-width:none;}
+  .section-bar-wrap::-webkit-scrollbar{display:none;}
   .section-bar{
-    max-width:1040px; margin:0 auto; padding:10px 28px; display:flex; gap:4px;
-    overflow-x:auto; scrollbar-width:none;
+    max-width:1040px; margin:0 auto; padding:6px 28px; display:flex; align-items:center; gap:2px;
+    min-width:max-content; overflow:visible;
   }
-  .section-bar::-webkit-scrollbar{display:none;}
-  .section-bar a{
+  .bar-link{
     flex:0 0 auto; font-size:13px; font-weight:500; color:var(--text-soft);
     padding:8px 14px; border-radius:99px; white-space:nowrap; transition:background .2s, color .2s;
+    background:none; border:none; cursor:pointer; font-family:var(--sans); text-decoration:none; display:inline-flex; align-items:center; gap:4px;
   }
-  .section-bar a:hover{color:var(--text); background:rgba(27,27,29,.04);}
-  .section-bar a.active{color:#ffffff; font-weight:600; background:var(--accent);}
+  .bar-link:hover{color:var(--text); background:rgba(27,27,29,.05);}
+  .bar-link.active{color:#ffffff; font-weight:600; background:var(--accent);}
+  .bar-arrow{font-size:10px; display:inline-block; transition:transform .2s; opacity:.6;}
+  .bar-group{position:relative; flex:0 0 auto;}
+  .bar-group.open .bar-group-btn{color:var(--text); background:rgba(27,27,29,.05);}
+  .bar-group.open .bar-arrow{transform:rotate(90deg);}
+  .bar-dropdown{
+    display:none; position:fixed; z-index:200;
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:6px; min-width:180px; box-shadow:var(--shadow-lg);
+  }
+  .bar-group.open .bar-dropdown{display:block;}
+  .bar-dropdown a{
+    display:block; font-size:13px; font-weight:500; color:var(--text-soft);
+    padding:9px 14px; border-radius:7px; white-space:nowrap; text-decoration:none;
+  }
+  .bar-dropdown a:hover{color:var(--text); background:var(--bg-soft);}
+  .bar-dropdown a.active{color:var(--accent); font-weight:600;}
   .content{min-width:0;}
   .content > section{padding:80px 0;}
   .content > section:first-child{padding-top:0;}
@@ -195,28 +210,48 @@
 
 <header>
   <div class="wrap navrow">
-    <div class="mark"><span class="dot"></span>Moshiur Faisal</div>
+    <a class="mark" href="#hero"><span class="dot"></span>Moshiur Faisal</a>
     <a class="nav-cta" href="#contact">Get in touch</a>
   </div>
   <div class="section-bar-wrap">
     <nav class="section-bar" id="sectionBar">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#publications">Publications</a>
-      <a href="#education">Education</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#recognition">Recognition</a>
-      <a href="#volunteering">Volunteering</a>
-      <a href="#affiliations">Affiliations</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" class="bar-link">About</a>
+      <div class="bar-group">
+        <button class="bar-link bar-group-btn">Research <span class="bar-arrow">›</span></button>
+        <div class="bar-dropdown">
+          <a href="#publications">Publications</a>
+          <a href="#recognition">Recognition</a>
+        </div>
+      </div>
+      <div class="bar-group">
+        <button class="bar-link bar-group-btn">Experience <span class="bar-arrow">›</span></button>
+        <div class="bar-dropdown">
+          <a href="#experience">Work Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+        </div>
+      </div>
+      <div class="bar-group">
+        <button class="bar-link bar-group-btn">Background <span class="bar-arrow">›</span></button>
+        <div class="bar-dropdown">
+          <a href="#education">Education</a>
+          <a href="#certifications">Certifications</a>
+        </div>
+      </div>
+      <div class="bar-group">
+        <button class="bar-link bar-group-btn">Community <span class="bar-arrow">›</span></button>
+        <div class="bar-dropdown">
+          <a href="#volunteering">Volunteering</a>
+          <a href="#affiliations">Affiliations</a>
+        </div>
+      </div>
+      <a href="#contact" class="bar-link">Contact</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="hero wrap">
+  <section class="hero wrap" id="hero">
     <div class="hero-grid">
       <div class="hero-text">
         <div class="eyebrow">Senior Associate, AI &amp; Data Science · Robi Axiata</div>
@@ -628,14 +663,48 @@
 </footer>
 
 <script>
-  const barLinks = document.querySelectorAll('.section-bar a');
-  const sections = Array.from(barLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  // Group dropdown toggle — use fixed positioning to escape overflow clipping
+  document.querySelectorAll('.bar-group-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const grp = btn.closest('.bar-group');
+      const wasOpen = grp.classList.contains('open');
+      document.querySelectorAll('.bar-group').forEach(g => g.classList.remove('open'));
+      if(!wasOpen){
+        const rect = btn.getBoundingClientRect();
+        const dropdown = grp.querySelector('.bar-dropdown');
+        dropdown.style.top  = (rect.bottom + 6) + 'px';
+        dropdown.style.left = rect.left + 'px';
+        grp.classList.add('open');
+      }
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.bar-group').forEach(g => g.classList.remove('open'));
+  });
+
+  // Scroll-spy active state
+  const allNavLinks = document.querySelectorAll('.bar-link[href], .bar-dropdown a');
+  const sections = Array.from(allNavLinks)
+    .map(a => { try{ return document.querySelector(a.getAttribute('href')); }catch(e){return null;} })
+    .filter(Boolean);
+
   let suppressScroll = false;
 
   function setActive(id){
-    barLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-    const activeLink = document.querySelector('.section-bar a.active');
-    if(activeLink) activeLink.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+    allNavLinks.forEach(a => {
+      const href = a.getAttribute('href');
+      const isActive = href === '#' + id;
+      a.classList.toggle('active', isActive);
+      // if active is inside a dropdown, also highlight the parent group button
+      const grpBtn = a.closest('.bar-group')?.querySelector('.bar-group-btn');
+      if(grpBtn) grpBtn.classList.toggle('active', isActive || grpBtn.classList.contains('active-child'));
+    });
+    // mark group button active if any child is active
+    document.querySelectorAll('.bar-group').forEach(grp => {
+      const hasActive = grp.querySelector('.bar-dropdown a.active');
+      grp.querySelector('.bar-group-btn').classList.toggle('active', !!hasActive);
+    });
   }
 
   function onScroll(){
@@ -646,12 +715,16 @@
     if(current) setActive(current.id);
   }
 
-  barLinks.forEach(a => {
+  allNavLinks.forEach(a => {
     a.addEventListener('click', () => {
-      setActive(a.getAttribute('href').slice(1));
-      suppressScroll = true;
-      window.clearTimeout(window._navTO);
-      window._navTO = window.setTimeout(() => { suppressScroll = false; }, 900);
+      const href = a.getAttribute('href');
+      if(href && href.startsWith('#') && href.length > 1){
+        setActive(href.slice(1));
+        suppressScroll = true;
+        window.clearTimeout(window._navTO);
+        window._navTO = window.setTimeout(() => { suppressScroll = false; }, 900);
+      }
+      document.querySelectorAll('.bar-group').forEach(g => g.classList.remove('open'));
     });
   });
 
