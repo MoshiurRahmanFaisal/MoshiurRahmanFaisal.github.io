@@ -90,6 +90,8 @@
   .hl-btn:hover{border-color:var(--accent); box-shadow:var(--shadow-md); transform:translateY(-1px);}
   .hl-btn.solid{background:var(--accent); color:#ffffff; border:none; box-shadow:var(--shadow-sm);}
   .hl-btn.solid:hover{filter:brightness(1.15); color:#ffffff; box-shadow:var(--shadow-md);}
+  .hl-btn.cv-btn{border-color:var(--accent); color:var(--accent);}
+  .hl-btn.cv-btn:hover{background:var(--accent); color:#ffffff;}
 
   section{padding:90px 0; border-top:1px solid var(--line); position:relative;}
   .label{font-family:var(--sans); font-size:12.5px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:12px;}
@@ -258,7 +260,7 @@
         <h1>Moshiur Rahman Faisal</h1>
         <p class="hero-role">AI Researcher &amp; Engineer</p>
         <div class="hero-rule"></div>
-        <p class="hero-sub">My work lies at the intersection of natural language processing and telecom data engineering. My research examines bias in large language models for under-resourced languages such as Bengali, and my professional practice involves designing production machine learning and geospatial pipelines operating across tens of millions of customer and network records.</p>
+        <p class="hero-sub">My work lies at the intersection of natural language processing and applied AI and data science. My research focuses on bias in large language models for under-resourced languages such as Bengali, and my professional practice spans machine learning and big data pipelines operating across tens of millions of records.</p>
         <div class="hero-meta">
           <span class="chip">NLP &amp; LLMs</span>
           <span class="chip">Geospatial Analytics</span>
@@ -267,6 +269,10 @@
         </div>
         <div class="hero-links">
           <a class="hl-btn solid" href="mailto:moshiur.faisal01@gmail.com">Email Me</a>
+          <a class="hl-btn cv-btn" href="assets/Moshiur_Rahman_Faisal_CV.pdf" download="Moshiur_Rahman_Faisal_CV.pdf">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download CV
+          </a>
           <a class="hl-btn" href="https://github.com/MoshiurRahmanFaisal" target="_blank" rel="noopener">GitHub ↗</a>
           <a class="hl-btn" href="https://scholar.google.com/citations?user=Qam5LZgAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
           <a class="hl-btn" href="https://www.linkedin.com/in/moshiurrahmanfaisal/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -286,9 +292,9 @@
     <h2>Background and research focus.</h2>
     <div class="about-grid">
       <div>
-        <p><strong>Moshiur Rahman Faisal is an AI researcher and engineer based in Dhaka, Bangladesh,</strong> working across natural language processing, geospatial analytics, and production machine learning. At Robi Axiata, Bangladesh's second-largest telecommunications operator, he develops AI/ML and generative AI systems, ranging from territory-assignment pipelines covering approximately 140,000 grid cells to retailer geolocation models operating on Oracle and PySpark at national scale.</p>
-        <p>His research background is in low-resource NLP, with a focus on Bengali and Banglish (transliterated Bengali). He has published work on emotion detection, context-aware data cleaning for Bengali text, and CPU-trainable alternatives to BERT-scale models for resource-constrained environments.</p>
-        <p>He is currently applying to PhD programs, with research interests centered on the performance and limitations of large language models in mental health applications across multilingual, low-resource settings, with particular focus on Bengali.</p>
+        <p><strong>Moshiur Rahman Faisal is an AI researcher and engineer based in Dhaka, Bangladesh,</strong> with over three years of industry experience applying machine learning and big data technologies at Robi Axiata, Bangladesh's second-largest telecommunications operator. His work spans the full ML lifecycle, from data engineering and predictive modelling to production deployment, across customer analytics, churn prediction, credit scoring, recommendation systems, and revenue forecasting, all operating at national scale on Hadoop, Spark, and Oracle.</p>
+        <p>His research is grounded in low-resource NLP, with a focus on Bengali and Banglish. He has three peer-reviewed publications covering emotion detection datasets, context-aware text cleaning for Bengali, and CPU-efficient alternatives to BERT-scale models for resource-constrained settings.</p>
+        <p>He is actively seeking PhD opportunities with research interests in evaluating and mitigating bias in large language models for mental health applications across multilingual, low-resource settings, with Bengali as the primary language of study.</p>
       </div>
       <div class="stat-grid">
         <div class="stat-card"><div class="n">3+ yrs</div><div class="d">Production ML at Robi Axiata</div></div>
@@ -309,11 +315,10 @@
         <div class="role">Senior Associate, AI &amp; Data Science</div>
         <div class="org">Robi Axiata PLC · Dhaka, Bangladesh</div>
         <ul>
-          <li>Apply AI/ML to customer and digital analytics for behavioral patterns and predictive decision-making.</li>
-          <li>Built Grid360, a territory-assignment pipeline covering ~141,893 grid cells using BallTree spatial matching.</li>
-          <li>Built the Emergency Retail Loan model, determining retailer eligibility and loan amount via KMeans clustering and THANA-wise segmentation, then productionized the pipeline.</li>
-          <li>Built an XGBoost + LightGBM ensemble for telecom site revenue prediction with LIME explanations.</li>
-          <li>Built a PySpark pipeline validating Facebook signal data against Robi's measurement reports.</li>
+          <li>Drive AI/ML initiatives across customer analytics, digital channels, and network intelligence.</li>
+          <li>Built the Emergency Retail Loan model to determine retailer credit eligibility and loan amount, then productionized the full pipeline with CI/CD and automated testing.</li>
+          <li>Built an XGBoost + LightGBM ensemble for site revenue forecasting with Optuna-tuned hyperparameters and LIME explanations.</li>
+          <li>Designed and deployed a next-best-offer recommendation model using behavioral and transactional data, improving targeting accuracy and conversion rates.</li>
         </ul>
       </div>
     </div>
@@ -324,10 +329,10 @@
         <div class="role">AI Innovation Specialist</div>
         <div class="org">Robi Axiata PLC · Dhaka, Bangladesh</div>
         <ul>
-          <li>Designed Big Data pipelines with Spark and Hadoop for telecom network and customer analytics.</li>
-          <li>Developed and deployed AI/ML and Generative AI solutions, including LLMs, on AWS.</li>
-          <li>Extended Oracle stored procedures for retailer geolocation with a data-sufficiency fallback chain.</li>
-          <li>Recognized with Q2 2024 Star Performer, Q2 2024 Best Team Efforts, and Q1 2023 Star Performer awards.</li>
+          <li>Built Customer Insight 360, a daily big data pipeline processing 51M+ customer records on Hadoop and Oracle, tracking 250+ KPIs across Tableau dashboards.</li>
+          <li>Built and deployed Apache Airflow using Docker for orchestrating automated data pipelines and ML workflows.</li>
+          <li>Developed a churn prediction system with XGBoost and SHAP/LIME explainability for targeted retention across millions of subscribers.</li>
+          <li>Recognised with Q2 2024 Star Performer, Q2 2024 Best Team Efforts, and Q1 2023 Star Performer awards.</li>
         </ul>
       </div>
     </div>
@@ -386,26 +391,33 @@
     <h2>Skills &amp; technologies.</h2>
     <div class="skill-cols">
       <div class="skill-col">
-        <div class="label">Languages &amp; DBs</div>
+        <div class="label">Languages &amp; Databases</div>
         <ul>
-          <li>Python · C / C++ · Java · R</li>
-          <li>Oracle · Apache Hive · MySQL</li>
+          <li>Python · R · Java · C/C++</li>
+          <li>Oracle SQL · Apache Hive · MySQL · PL/SQL</li>
         </ul>
       </div>
       <div class="skill-col">
-        <div class="label">ML / NLP</div>
+        <div class="label">ML &amp; NLP</div>
         <ul>
-          <li>PyTorch · TensorFlow · Hugging Face</li>
+          <li>PyTorch · TensorFlow · Hugging Face · NLTK</li>
           <li>XGBoost · LightGBM · Scikit-learn</li>
-          <li>Apache Spark · NLTK</li>
+          <li>SHAP · LIME · Optuna</li>
         </ul>
       </div>
       <div class="skill-col">
-        <div class="label">Infra &amp; Cloud</div>
+        <div class="label">Data Engineering &amp; Cloud</div>
         <ul>
-          <li>AWS · Cloudera · Docker</li>
-          <li>Apache Airflow · GitLab CI/CD</li>
-          <li>Hadoop · Linux</li>
+          <li>Apache Spark · Hadoop · Apache Airflow</li>
+          <li>AWS · Cloudera · Docker · Linux</li>
+          <li>GitLab CI/CD · Apache Kafka</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <div class="label">GenAI &amp; Visualisation</div>
+        <ul>
+          <li>LLMs · Prompt Engineering · RAG</li>
+          <li>Tableau · Plotly · Matplotlib · Seaborn</li>
         </ul>
       </div>
     </div>
@@ -616,7 +628,7 @@
 
   <section id="affiliations" class="wrap">
     <div class="label">Affiliations</div>
-    <h2>Languages &amp; memberships.</h2>
+    <h2>Memberships &amp; languages.</h2>
     <div class="two-col">
       <div>
         <div class="edu-item">
@@ -651,6 +663,10 @@
     <p>For discussions regarding PhD supervision, low-resource NLP research, or production machine learning at scale, please feel free to get in touch.</p>
     <div class="contact-links">
       <a class="hl-btn solid" href="mailto:moshiur.faisal01@gmail.com">Email</a>
+      <a class="hl-btn cv-btn" href="assets/Moshiur_Rahman_Faisal_CV.pdf" download="Moshiur_Rahman_Faisal_CV.pdf">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download CV
+      </a>
       <a class="hl-btn" href="https://www.linkedin.com/in/moshiurrahmanfaisal/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="hl-btn" href="https://github.com/MoshiurRahmanFaisal" target="_blank" rel="noopener">GitHub</a>
       <a class="hl-btn" href="https://scholar.google.com/citations?user=Qam5LZgAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
@@ -663,7 +679,7 @@
 </footer>
 
 <script>
-  // Group dropdown toggle — use fixed positioning to escape overflow clipping
+  // Group dropdown toggle - use fixed positioning to escape overflow clipping
   document.querySelectorAll('.bar-group-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
