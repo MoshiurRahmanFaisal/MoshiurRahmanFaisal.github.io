@@ -72,26 +72,41 @@
   a{color:inherit; text-decoration:none;}
   h1,h2,h3,h4{font-weight:600;}
   .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
-  .glow{display:none;}
 
-  /* ---------- Header ---------- */
-  header{
-    position:sticky; top:0; z-index:50; background:var(--header-bg);
-    -webkit-backdrop-filter:saturate(1.6) blur(16px); backdrop-filter:saturate(1.6) blur(16px);
-    border-bottom:1px solid transparent; transition:border-color .2s;
+  /* Hero backdrop: a faint map grid with a few selected cells, fading out */
+  .glow{
+    position:absolute; top:0; left:0; right:0; height:760px; z-index:-1; overflow:hidden; pointer-events:none;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px; background-position:50% 0;
+    -webkit-mask-image:radial-gradient(ellipse 75% 70% at 65% 22%, #000 8%, transparent 72%);
+    mask-image:radial-gradient(ellipse 75% 70% at 65% 22%, #000 8%, transparent 72%);
   }
-  header.scrolled{border-bottom-color:var(--line);}
-  .navrow{display:flex; align-items:center; gap:24px; padding-top:12px; padding-bottom:12px;}
+  .glow::after{
+    content:""; position:absolute; top:144px; left:calc(50% + 24px + 96px); width:48px; height:48px;
+    background:var(--accent-soft);
+    box-shadow:96px -48px 0 var(--accent-soft), 384px 0 0 var(--accent-soft), 432px 48px 0 var(--accent-soft),
+      -48px 336px 0 var(--accent-soft), 384px 384px 0 var(--accent-soft), -624px -48px 0 var(--accent-soft),
+      -720px 384px 0 var(--accent-soft), 0 432px 0 var(--accent-soft);
+  }
+
+  /* ---------- Header: floating bar ---------- */
+  header{
+    position:sticky; top:12px; z-index:50; width:calc(100% - 32px); max-width:1080px; margin:12px auto 0;
+    background:var(--header-bg); -webkit-backdrop-filter:saturate(1.6) blur(16px); backdrop-filter:saturate(1.6) blur(16px);
+    border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow-sm); transition:box-shadow .25s;
+  }
+  header.scrolled{box-shadow:var(--shadow-md);}
+  .navrow{display:flex; align-items:center; gap:24px; max-width:none; padding:8px 8px 8px 24px;}
   .mark{font-weight:600; font-size:15px; letter-spacing:-.01em; color:var(--text); white-space:nowrap;}
   .mark:hover{color:var(--accent);}
   .section-bar{position:relative; display:flex; align-items:center; gap:2px; margin-left:auto;}
   .bar-link{
-    font-size:13.5px; font-weight:500; color:var(--text-soft); padding:7px 11px; border-radius:8px;
+    font-size:13.5px; font-weight:500; color:var(--text-soft); padding:7px 12px; border-radius:99px;
     white-space:nowrap; transition:color .15s, background-color .15s;
   }
   .bar-link:hover{color:var(--text); background:var(--hover);}
   .bar-link.active{color:var(--accent); background:var(--accent-soft);}
-  .nav-actions{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .nav-actions{display:flex; align-items:center; gap:8px; flex-shrink:0;}
   .nav-cta{
     font-size:13.5px; font-weight:600; padding:8px 16px; border-radius:99px;
     background:var(--accent); color:var(--on-accent); white-space:nowrap; transition:filter .2s;
@@ -106,22 +121,20 @@
   :root[data-theme="dark"] .theme-toggle .icon-sun{display:block;}
   :root[data-theme="dark"] .theme-toggle .icon-moon{display:none;}
   @media(max-width:1060px){
-    .navrow{flex-wrap:wrap; gap:0 16px; padding-bottom:8px;}
+    header{border-radius:22px;}
+    .navrow{flex-wrap:wrap; gap:0 12px; padding:8px 8px 6px 18px;}
     .nav-actions{margin-left:auto;}
-    .section-bar{
-      order:3; width:calc(100% + 56px); margin:10px -28px 0; padding:0 20px;
-      overflow-x:auto; scrollbar-width:none;
-    }
+    .section-bar{order:3; width:calc(100% + 12px); margin:6px 0 0 -12px; overflow-x:auto; scrollbar-width:none;}
     .section-bar::-webkit-scrollbar{display:none;}
   }
 
   /* ---------- Hero ---------- */
-  .hero{max-width:1080px; margin:0 auto; padding:88px 28px 80px;}
+  .hero{max-width:1080px; margin:0 auto; padding:80px 28px 80px;}
   .hero-grid{display:flex; gap:64px; align-items:center;}
   .hero-text{flex:1 1 auto; min-width:0;}
   .hero-photo{
     flex:0 0 280px; width:280px; border-radius:20px; overflow:hidden;
-    background:var(--bg-soft); border:1px solid var(--line);
+    background:var(--bg-soft); border:1px solid var(--line); box-shadow:var(--shadow-md);
   }
   .hero-photo img{display:block; width:100%; height:auto;}
   .eyebrow{font-size:14px; font-weight:500; color:var(--text-soft); margin-bottom:16px;}
@@ -154,15 +167,15 @@
   .layout{max-width:1080px; margin:0 auto; padding:0 28px;}
   .content{min-width:0;}
   .content > section{
-    padding:72px 0; border-top:1px solid var(--line); scroll-margin-top:72px;
+    padding:72px 0; border-top:1px solid var(--line); scroll-margin-top:84px;
     display:grid; grid-template-columns:200px minmax(0,1fr); column-gap:56px;
   }
   .content > section > *{grid-column:2;}
-  .content > section > .sec-head{grid-column:1; grid-row:1 / span 60; align-self:start; position:sticky; top:92px;}
+  .content > section > .sec-head{grid-column:1; grid-row:1 / span 60; align-self:start; position:sticky; top:104px;}
   .sec-head h2{font-size:18px; letter-spacing:-.015em; line-height:1.3;}
   .sec-head p{font-size:13.5px; line-height:1.45; color:var(--text-dim); margin-top:6px;}
   @media(max-width:860px){
-    .content > section{display:block; padding:56px 0; scroll-margin-top:112px;}
+    .content > section{display:block; padding:56px 0; scroll-margin-top:124px;}
     .content > section > .sec-head{position:static; margin-bottom:28px;}
     .sec-head h2{font-size:20px;}
   }
@@ -251,7 +264,23 @@
   .edu-item p{margin-top:8px; color:var(--text-soft); font-size:14.5px;}
 
   /* ---------- Footer ---------- */
-  footer{margin-top:24px; padding:88px 0 40px; border-top:1px solid var(--line); background:var(--bg-soft);}
+  footer{padding:8px 0 36px; scroll-margin-top:84px;}
+  /* The contact panel always uses the dark palette, in both themes */
+  .cta-panel{
+    --text:#eef1f6; --text-soft:#b3bccb; --text-dim:#8a94a6; --line:#2a3240; --card:#1a202a;
+    --accent:#9db8ff; --on-accent:#0e1116; --hover:rgba(255,255,255,.06);
+    position:relative; overflow:hidden; padding:64px 56px; border-radius:28px;
+    background:#10141b; color:var(--text); border:1px solid transparent;
+  }
+  :root[data-theme="dark"] .cta-panel{background:#161b23; border-color:#252c38;}
+  .cta-panel::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size:48px 48px; background-position:100% 0;
+    -webkit-mask-image:radial-gradient(ellipse 60% 90% at 100% 0%, #000 0%, transparent 70%);
+    mask-image:radial-gradient(ellipse 60% 90% at 100% 0%, #000 0%, transparent 70%);
+  }
+  .cta-panel > *{position:relative;}
   .contact-cta .label{font-size:14px; font-weight:500; color:var(--accent); margin-bottom:14px;}
   .contact-cta h2{
     font-size:clamp(28px,4vw,44px); line-height:1.1; letter-spacing:-.03em;
@@ -260,9 +289,21 @@
   .contact-cta p{color:var(--text-soft); max-width:60ch; margin-bottom:32px; font-size:16px;}
   .contact-links{display:flex; flex-wrap:wrap; gap:10px;}
   .foot-bottom{
-    margin-top:64px; padding-top:20px; border-top:1px solid var(--line);
+    margin-top:24px; padding:0 8px;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:13px; color:var(--text-dim);
   }
+  @media(max-width:640px){ .cta-panel{padding:40px 24px; border-radius:22px;} }
+
+  /* Card border that lights up under the cursor */
+  .spot{position:relative;}
+  .spot::before{
+    content:""; position:absolute; inset:-1px; padding:1px; border-radius:inherit; pointer-events:none;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), var(--accent), transparent 70%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0; transition:opacity .3s;
+  }
+  @media(hover:hover){ .spot:hover::before{opacity:1;} }
 
   ::selection{background:var(--accent); color:var(--on-accent);}
   a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
@@ -344,7 +385,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="assets/profile.png" alt="Portrait of Moshiur Rahman Faisal">
+        <img src="assets/dp_mrf.png" alt="Portrait of Moshiur Rahman Faisal">
       </div>
     </div>
   </section>
@@ -462,14 +503,14 @@
       <p>Skills &amp; technologies</p>
     </div>
     <div class="skill-cols">
-      <div class="skill-col">
+      <div class="skill-col spot">
         <div class="label">Languages &amp; Databases</div>
         <ul>
           <li>Python · R · Java · C/C++</li>
           <li>Oracle SQL · Apache Hive · MySQL · PL/SQL</li>
         </ul>
       </div>
-      <div class="skill-col">
+      <div class="skill-col spot">
         <div class="label">ML &amp; NLP</div>
         <ul>
           <li>PyTorch · TensorFlow · Hugging Face · NLTK</li>
@@ -477,7 +518,7 @@
           <li>SHAP · LIME · Optuna</li>
         </ul>
       </div>
-      <div class="skill-col">
+      <div class="skill-col spot">
         <div class="label">Data Engineering &amp; Cloud</div>
         <ul>
           <li>Apache Spark · Hadoop · Apache Airflow</li>
@@ -485,7 +526,7 @@
           <li>GitLab CI/CD · Apache Kafka</li>
         </ul>
       </div>
-      <div class="skill-col">
+      <div class="skill-col spot">
         <div class="label">GenAI &amp; Visualisation</div>
         <ul>
           <li>LLMs · Prompt Engineering · RAG</li>
@@ -501,39 +542,39 @@
       <p>Production pipelines &amp; research systems</p>
     </div>
     <div class="proj-grid">
-      <div class="proj">
+      <div class="proj spot">
         <span class="tag">ML · Customer Analytics</span>
         <h3>Telco Churn Prediction &amp; Explainability</h3>
         <div class="proj-date">Apr 2025 – Jul 2025</div>
         <p>Built machine learning models to predict telecom customer churn, with end-to-end data preprocessing and SHAP and LIME-based interpretability to identify the key factors driving churn risk.</p>
         <div class="stack"><span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>SHAP</span><span>LIME</span><span>AWS</span></div>
       </div>
-      <div class="proj">
+      <div class="proj spot">
         <span class="tag">Data Engineering · ML</span>
         <h3>Customer Insight 360</h3>
         <div class="proj-date">Apr 2024 – Nov 2024</div>
         <p>Designed daily data pipelines processing records for more than 51 million customers on Hadoop and Oracle, applying machine learning for customer prediction tasks and tracking 250+ KPIs visualized through Tableau dashboards.</p>
         <div class="stack"><span>Apache Airflow</span><span>Apache Spark</span><span>Oracle SQL</span><span>PL/SQL</span><span>Docker</span><span>Tableau</span></div>
       </div>
-      <div class="proj">
+      <div class="proj spot">
         <span class="tag">ML · Production</span>
         <h3>Emergency Retail Loan ML Pipeline</h3>
         <p>Developed the underlying model determining retailer loan eligibility and credit amount from 30-day transaction history, using global KMeans clustering and THANA-wise IQR segmentation, then productionized the pipeline with YAML configs, 153 passing tests, and SHA256 artifact hashing.</p>
         <div class="stack"><span>Python</span><span>GitLab CI/CD</span><span>Plotly</span></div>
       </div>
-      <div class="proj">
+      <div class="proj spot">
         <span class="tag">ML · Forecasting</span>
         <h3>Site Revenue Prediction</h3>
         <p>Zone-specific XGBoost + LightGBM ensemble for telecom site revenue, using RF signal quality and TCH availability features, with Optuna-tuned hyperparameters and LIME explanations.</p>
         <div class="stack"><span>XGBoost</span><span>LightGBM</span><span>Optuna</span><span>LIME</span></div>
       </div>
-      <div class="proj">
+      <div class="proj spot">
         <span class="tag">ML · Recommendation</span>
         <h3>Customer Next-Best-Offer Prediction</h3>
         <p>Designed and deployed machine learning models to recommend next-best offers using behavioral and transactional data, with automated data ingestion and model deployment workflows that improved targeting accuracy and conversion rates.</p>
         <div class="stack"><span>Python</span><span>Oracle</span><span>ML Pipelines</span></div>
       </div>
-      <div class="proj">
+      <div class="proj spot">
         <span class="tag">NLP · Research</span>
         <h3>Bengali &amp; Banglish Emotion Dataset</h3>
         <p>An 80,098-sample monolingual dataset for six-class emotion detection, combining existing corpora with annotated YouTube and Twitter data. 93.5% Cohen's Kappa.</p>
@@ -592,6 +633,7 @@
         <h3>Membership Perks 5.0</h3>
         <div class="venue">IEEE NSU Student Branch · Syndicate Hall, North South University, Dhaka</div>
         <p>Invited as an alumnus and former branch chairperson to speak ahead of IEEE Day 2026 on the benefits of IEEE membership, including its global professional network, mentorship, and the research and career opportunities it opens for students.</p>
+        <a href="https://ieeensusb.org/events/510/" target="_blank" rel="noopener">Event page ↗</a>
       </div>
     </div>
 
@@ -616,7 +658,7 @@
       <div>
         <div class="edu-item">
           <h3>BSc, Computer Science &amp; Engineering</h3>
-          <div class="meta">North South University · Jan 2018 – Apr 2022 · CGPA 3.59/4.00, Cum Laude</div>
+          <div class="meta">North South University · Jan 2018 – Apr 2022 · Cum Laude</div>
           <p>Senior thesis on text-based emotion detection in Banglish, Bangla, and English; directed research on mental instability detection from text data, supervised by Prof. Dr. Sifat Momen.</p>
         </div>
       </div>
@@ -636,31 +678,31 @@
       <p>Licenses &amp; certifications</p>
     </div>
     <div class="cert-grid">
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>ETL and Data Pipelines with Shell, Airflow and Kafka</h4>
         <div class="meta">IBM · Nov 2024</div>
       </div>
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>Inferential Statistics</h4>
         <div class="meta">Duke University · Oct 2024</div>
       </div>
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>Machine Learning with Python</h4>
         <div class="meta">Sep 2024</div>
       </div>
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>Generative AI with Large Language Models</h4>
         <div class="meta">Mar 2024</div>
       </div>
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>SQL (Advanced) Certificate</h4>
         <div class="meta">Mar 2024</div>
       </div>
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>Machine Learning Specialization</h4>
         <div class="meta">Jan 2024</div>
       </div>
-      <div class="cert-card">
+      <div class="cert-card spot">
         <h4>Python for Data Science, AI &amp; Development</h4>
         <div class="meta">Jan 2024</div>
       </div>
@@ -776,6 +818,7 @@
 
 <footer id="contact">
   <div class="wrap contact-cta">
+    <div class="cta-panel">
     <div class="label">Get in touch</div>
     <h2>Looking for a PhD supervisor, and open to research collaboration.</h2>
     <p>I am looking for a PhD supervisor in NLP and responsible AI, with a focus on bias in large language models for mental health in multilingual, low-resource settings. If my background fits your group, or you would like to discuss a research collaboration, I would be glad to hear from you.</p>
@@ -788,6 +831,7 @@
       <a class="hl-btn" href="https://www.linkedin.com/in/moshiurrahmanfaisal/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="hl-btn" href="https://github.com/MoshiurRahmanFaisal" target="_blank" rel="noopener">GitHub</a>
       <a class="hl-btn" href="https://scholar.google.com/citations?user=Qam5LZgAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+    </div>
     </div>
     <div class="foot-bottom">
       <div>© 2026 Moshiur Rahman Faisal, Dhaka, Bangladesh</div>
@@ -851,6 +895,15 @@
       io.observe(el);
     });
   })();
+
+  // Cards: track the cursor so the border highlight follows it
+  document.querySelectorAll('.spot').forEach(el => {
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
 
   // Section nav: highlight the link for the section in view
   const header = document.querySelector('header');
