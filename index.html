@@ -308,7 +308,7 @@
   /* Justified body text */
   .sec-intro{color:var(--text-soft); font-size:15.5px; margin-bottom:30px; max-width:74ch;}
   .hero-sub, .about-grid p, .xp li, .proj p, .pub p, .talk p, .edu-item p, .sec-intro, .contact-cta p{
-    text-align:justify; -webkit-hyphens:auto; hyphens:auto;
+    text-align:justify; -webkit-hyphens:manual; hyphens:manual;
   }
   /* Narrow phone columns leave big gaps when justified, so they stay left-aligned */
   @media(max-width:560px){
@@ -441,6 +441,17 @@
         <ul>
           <li>Building end-to-end AI and Data Science solutions for retailer analytics and geospatial site intelligence.</li>
           <li>Designing scalable ML pipelines that combine machine learning, geospatial analytics, and data engineering to optimize site selection, accelerate network expansion, and deliver intelligent retailer segmentation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="when">Oct 2025 – Jul 2026</div>
+      <div>
+        <div class="role">Senior Associate, AI &amp; Data Science</div>
+        <div class="org">Robi Axiata PLC · Dhaka, Bangladesh</div>
+        <ul>
+          <li>Drove AI/ML initiatives across customer analytics, digital channels, and network intelligence.</li>
           <li>Built the Emergency Retail Loan model to determine retailer credit eligibility and loan amount, then productionized the full pipeline with CI/CD and automated testing.</li>
           <li>Built an XGBoost + LightGBM ensemble for site revenue forecasting with Optuna-tuned hyperparameters and LIME explanations.</li>
           <li>Designed and deployed a next-best-offer recommendation model using behavioral and transactional data, improving targeting accuracy and conversion rates.</li>
