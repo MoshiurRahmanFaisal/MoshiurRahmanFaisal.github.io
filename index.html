@@ -248,6 +248,11 @@
     .pub .idx, .talk .when{padding-top:0;}
   }
 
+  .pub-status{
+    display:inline-block; margin-bottom:8px; padding:2px 10px; border-radius:99px;
+    font-size:13px; font-weight:600; color:var(--accent); background:var(--accent-soft);
+  }
+
   /* Certifications */
   .cert-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
   @media(max-width:640px){.cert-grid{grid-template-columns:1fr;}}
@@ -415,12 +420,12 @@
     <div class="about-grid">
       <div>
         <p><strong>Moshiur Rahman Faisal is an AI researcher and engineer based in Dhaka, Bangladesh,</strong> with over three years of industry experience applying machine learning and big data technologies at Robi Axiata, Bangladesh's second-largest telecommunications operator. His work spans the full ML lifecycle, from data engineering and predictive modelling to production deployment, across customer analytics, churn prediction, credit scoring, recommendation systems, and revenue forecasting, all operating at national scale on Hadoop, Spark, and Oracle.</p>
-        <p>His research is grounded in low-resource NLP, with a focus on Bengali and Banglish. He has three peer-reviewed publications covering emotion detection datasets, context-aware text cleaning for Bengali, and CPU-efficient alternatives to BERT-scale models for resource-constrained settings.</p>
+        <p>His research is grounded in low-resource NLP, with a focus on Bengali and Banglish. He has four peer-reviewed publications covering cross-lingual mental health NLP, emotion detection datasets, context-aware text cleaning for Bengali, and CPU-efficient alternatives to BERT-scale models for resource-constrained settings.</p>
         <p>He is actively seeking PhD opportunities with research interests in evaluating and mitigating bias in large language models for mental health applications across multilingual, low-resource settings, with Bengali as the primary language of study.</p>
       </div>
       <div class="stat-grid">
         <div class="stat-card"><div class="n">3+ yrs</div><div class="d">Production ML at Robi Axiata</div></div>
-        <div class="stat-card"><div class="n">3</div><div class="d">Peer-reviewed publications</div></div>
+        <div class="stat-card"><div class="n">4</div><div class="d">Peer-reviewed publications</div></div>
         <div class="stat-card"><div class="n">6</div><div class="d">Production ML &amp; research projects</div></div>
         <div class="stat-card"><div class="n">7</div><div class="d">Professional certifications</div></div>
       </div>
@@ -612,6 +617,16 @@
     <div class="sec-head">
       <h2>Publications</h2>
       <p>Peer-reviewed research</p>
+    </div>
+
+    <div class="pub">
+      <div class="idx">J.3</div>
+      <div>
+        <span class="pub-status">Accepted · Oct 2026</span>
+        <h3>Understanding Cross-Lingual Model Behavior in Mental Health NLP: Evidence from English–Bengali Transformer Models</h3>
+        <div class="venue">Annals of Data Science · 2026</div>
+        <p>First-author paper. Introduces BMHD, a bilingual English–Bengali mental health dataset, and examines how transformer models behave when classifying mental health conditions across the two languages, with a focus on cross-lingual differences in model behavior for low-resource Bengali.</p>
+      </div>
     </div>
 
     <div class="pub">
