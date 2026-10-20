@@ -249,36 +249,6 @@
     .pub .idx, .talk .when{padding-top:0;}
   }
 
-  /* Hero latest-paper card */
-  .latest{
-    margin-top:32px; display:flex; align-items:center; gap:14px; max-width:560px;
-    padding:14px 18px; border:1px solid var(--line); border-radius:16px; background:var(--card);
-    box-shadow:var(--shadow-sm); transition:border-color .2s, transform .2s;
-  }
-  .latest:hover{border-color:var(--accent); transform:translateY(-1px);}
-  .latest-tag{flex:none; font-size:13px; font-weight:600; color:var(--accent); background:var(--accent-soft); padding:4px 10px; border-radius:99px;}
-  .latest-body{min-width:0;}
-  .latest-title{display:block; font-size:15.5px; font-weight:600; line-height:1.35; color:var(--text);}
-  .latest-meta{display:block; font-size:13.5px; color:var(--text-dim); margin-top:2px;}
-  @media(max-width:760px){ .latest{flex-direction:column; align-items:flex-start; gap:8px;} }
-
-  /* News */
-  .news{list-style:none;}
-  .news li{display:grid; grid-template-columns:88px minmax(0,1fr); gap:20px; padding:14px 0; border-top:1px solid var(--line);}
-  .news li:first-child{border-top:none; padding-top:0;}
-  .news .d{font-size:14.5px; font-weight:500; color:var(--text-dim); padding-top:2px;}
-  .news .t{font-size:16.5px; color:var(--text-soft);}
-  .news .t strong{color:var(--text); font-weight:600;}
-  .ilink{color:var(--accent); text-decoration:underline; text-decoration-color:var(--accent-soft); text-decoration-thickness:2px; text-underline-offset:3px; transition:text-decoration-color .2s;}
-  .ilink:hover{text-decoration-color:var(--accent);}
-  @media(max-width:560px){ .news li{grid-template-columns:1fr; gap:2px;} }
-
-  /* Skill tag clouds */
-  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
-  .tags span{font-size:14.5px; font-weight:500; color:var(--text-soft); background:var(--bg-soft); border:1px solid var(--line); padding:5px 12px; border-radius:99px;}
-  .pub p b.me{color:var(--text); font-weight:600;}
-  .sec-note{margin-top:16px; font-size:15px; color:var(--text-dim);}
-
   /* Certifications */
   .cert-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
   @media(max-width:640px){.cert-grid{grid-template-columns:1fr;}}
@@ -363,7 +333,6 @@
     .hero-text > :nth-child(4){animation-delay:.18s;}
     .hero-text > :nth-child(5){animation-delay:.24s;}
     .hero-text > :nth-child(6){animation-delay:.30s;}
-    .hero-text > :nth-child(7){animation-delay:.36s;}
     .hero-photo{animation-delay:.2s;}
 
     /* Scroll reveal: the class is added by script, so content stays visible without JS */
@@ -387,7 +356,6 @@
     <a class="mark" href="#hero">Moshiur Faisal</a>
     <nav class="section-bar" id="sectionBar" aria-label="Sections">
       <a href="#about" class="bar-link">About</a>
-      <a href="#news" class="bar-link">News</a>
       <a href="#experience" class="bar-link">Experience</a>
       <a href="#projects" class="bar-link">Projects</a>
       <a href="#publications" class="bar-link">Publications</a>
@@ -430,13 +398,6 @@
           <a class="hl-btn" href="https://scholar.google.com/citations?user=Qam5LZgAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
           <a class="hl-btn" href="https://www.linkedin.com/in/moshiurrahmanfaisal/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-        <a class="latest" href="https://doi.org/10.1007/s40745-026-00743-y" target="_blank" rel="noopener">
-          <span class="latest-tag">New paper</span>
-          <span class="latest-body">
-            <span class="latest-title">Understanding Cross-Lingual Model Behavior in Mental Health NLP</span>
-            <span class="latest-meta">Annals of Data Science, October 2026</span>
-          </span>
-        </a>
       </div>
       <div class="hero-photo">
         <img src="assets/dp_mrf.png" alt="Portrait of Moshiur Rahman Faisal">
@@ -467,19 +428,6 @@
     </div>
   </section>
 
-  <section id="news" class="wrap">
-    <div class="sec-head">
-      <h2>News</h2>
-      <p>Recent updates</p>
-    </div>
-    <ul class="news">
-      <li><span class="d">Oct 2026</span><span class="t">Paper on <a class="ilink" href="https://doi.org/10.1007/s40745-026-00743-y" target="_blank" rel="noopener">cross-lingual model behavior in mental health NLP</a> published in <strong>Annals of Data Science</strong>, with the BMHD dataset released on <a class="ilink" href="https://github.com/MoshiurRahmanFaisal/BMHD" target="_blank" rel="noopener">GitHub</a>.</span></li>
-      <li><span class="d">Oct 2026</span><span class="t">Invited talk at <a class="ilink" href="https://ieeensusb.org/events/510/" target="_blank" rel="noopener">Membership Perks 5.0</a>, IEEE NSU Student Branch.</span></li>
-      <li><span class="d">Aug 2026</span><span class="t">Received the <strong>Q1 2026 CS Excellence Award</strong> at Robi Axiata.</span></li>
-      <li><span class="d">Jul 2026</span><span class="t">Promoted to <strong>Associate Manager, AI &amp; Data Science</strong> at Robi Axiata.</span></li>
-    </ul>
-  </section>
-
   <section id="experience" class="wrap">
     <div class="sec-head">
       <h2>Experience</h2>
@@ -504,7 +452,10 @@
         <div class="role">Senior Associate, AI &amp; Data Science</div>
         <div class="org">Robi Axiata PLC · Dhaka, Bangladesh</div>
         <ul>
-          <li>Built and productionized the Emergency Retail Loan model, plus site revenue forecasting and next-best-offer recommendation models.</li>
+          <li>Drove AI/ML initiatives across customer analytics, digital channels, and network intelligence.</li>
+          <li>Built the Emergency Retail Loan model to determine retailer credit eligibility and loan amount, then productionized the full pipeline with CI/CD and automated testing.</li>
+          <li>Built an XGBoost + LightGBM ensemble for site revenue forecasting with Optuna-tuned hyperparameters and LIME explanations.</li>
+          <li>Designed and deployed a next-best-offer recommendation model using behavioral and transactional data, improving targeting accuracy and conversion rates.</li>
         </ul>
       </div>
     </div>
@@ -515,7 +466,10 @@
         <div class="role">AI Innovation Specialist</div>
         <div class="org">Robi Axiata PLC · Dhaka, Bangladesh</div>
         <ul>
-          <li>Built Customer Insight 360, a daily pipeline over 51M+ customer records, and an explainable churn prediction system.</li>
+          <li>Built Customer Insight 360, a daily big data pipeline processing 51M+ customer records on Hadoop and Oracle, tracking 250+ KPIs across Tableau dashboards.</li>
+          <li>Built and deployed Apache Airflow using Docker for orchestrating automated data pipelines and ML workflows.</li>
+          <li>Developed a churn prediction system with XGBoost and SHAP/LIME explainability for targeted retention across millions of subscribers.</li>
+          <li>Recognised with Q2 2024 Star Performer, Q2 2024 Best Team Efforts, and Q1 2023 Star Performer awards.</li>
         </ul>
       </div>
     </div>
@@ -526,18 +480,44 @@
         <div class="role">Senior Research Assistant</div>
         <div class="org">North South University · Remote</div>
         <ul>
-          <li>Led Bengali and Banglish NLP research with Prof. Dr. Mohammad Rashedur Rahman, alongside my role at Robi.</li>
+          <li>Led NLP research on Bengali and Banglish text, supervised by Prof. Dr. Mohammad Rashedur Rahman.</li>
+          <li>Designed a context-aware data cleaning pipeline for Bengali text, improving downstream classification accuracy.</li>
+          <li>Built an 80,098-sample monolingual dataset for six-class emotion detection in Bengali and Banglish.</li>
         </ul>
       </div>
     </div>
 
     <div class="xp">
-      <div class="when">Mar 2022 – Oct 2022</div>
+      <div class="when">Jun 2022 – Oct 2022</div>
       <div>
-        <div class="role">AI Intern, then Junior Machine Learning Engineer</div>
+        <div class="role">Junior Machine Learning Engineer</div>
         <div class="org">AlterSense Limited · Dhaka, Bangladesh</div>
         <ul>
-          <li>Built YOLOv5-based activity detection models for the garment sector.</li>
+          <li>Developed a worker activity detection model for the RMG (garment) sector.</li>
+          <li>Trained and deployed YOLOv5-based object detection models on large-scale image and video data.</li>
+          <li>Built deep learning pipelines with OpenCV and TensorFlow, containerized with Docker for production.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="when">Mar 2022 – May 2022</div>
+      <div>
+        <div class="role">Intern, Artificial Intelligence</div>
+        <div class="org">AlterSense Limited · Dhaka, Bangladesh</div>
+        <ul>
+          <li>Researched, trained, and evaluated activity detection models; analyzed and prepared video data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="when">Oct 2021 – Dec 2021</div>
+      <div>
+        <div class="role">Intern Business Analyst</div>
+        <div class="org">Proficient Information Systems · Bangladesh</div>
+        <ul>
+          <li>Handled requirement analysis and documentation, ran scrums, managed PM tools, QA, and client communication.</li>
         </ul>
       </div>
     </div>
@@ -550,12 +530,34 @@
     </div>
     <div class="skill-cols">
       <div class="skill-col spot">
-        <div class="label">ML &amp; NLP</div>
-        <div class="tags"><span>PyTorch</span><span>Hugging Face</span><span>TensorFlow</span><span>XGBoost</span><span>LightGBM</span><span>Scikit-learn</span><span>SHAP</span><span>LIME</span><span>LLMs</span><span>RAG</span></div>
+        <div class="label">Languages &amp; Databases</div>
+        <ul>
+          <li>Python · R · Java · C/C++</li>
+          <li>Oracle SQL · Apache Hive · MySQL · PL/SQL</li>
+        </ul>
       </div>
       <div class="skill-col spot">
-        <div class="label">Data &amp; infrastructure</div>
-        <div class="tags"><span>Python</span><span>PySpark</span><span>Hive</span><span>Oracle SQL</span><span>Hadoop</span><span>Airflow</span><span>Kafka</span><span>Docker</span><span>AWS</span><span>GitLab CI/CD</span><span>Tableau</span></div>
+        <div class="label">ML &amp; NLP</div>
+        <ul>
+          <li>PyTorch · TensorFlow · Hugging Face · NLTK</li>
+          <li>XGBoost · LightGBM · Scikit-learn</li>
+          <li>SHAP · LIME · Optuna</li>
+        </ul>
+      </div>
+      <div class="skill-col spot">
+        <div class="label">Data Engineering &amp; Cloud</div>
+        <ul>
+          <li>Apache Spark · Hadoop · Apache Airflow</li>
+          <li>AWS · Cloudera · Docker · Linux</li>
+          <li>GitLab CI/CD · Apache Kafka</li>
+        </ul>
+      </div>
+      <div class="skill-col spot">
+        <div class="label">GenAI &amp; Visualisation</div>
+        <ul>
+          <li>LLMs · Prompt Engineering · RAG</li>
+          <li>Tableau · Plotly · Matplotlib · Seaborn</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -618,7 +620,7 @@
       <div>
         <h3>Understanding Cross-Lingual Model Behavior in Mental Health NLP: Evidence from English–Bengali Transformer Models</h3>
         <div class="venue">Annals of Data Science · 2026 · Open access</div>
-        <p><b class="me">Faisal, M.R.</b>, Meem, S.I., Uddin, S. Introduces BMHD, a bilingual English–Bengali mental health dataset of 10,672 parallel posts per language across 11 classes (Cohen's Kappa 0.91 English, 0.89 Bengali). Shows that transformer models process identical content differently across the two languages: they miss more suicidal and psychosis-related posts in Bengali, and Integrated Gradients, SHAP and LIME agree poorly on what drives predictions, especially for Bengali.</p>
+        <p>Faisal, M.R., Meem, S.I., Uddin, S. Introduces BMHD, a bilingual English–Bengali mental health dataset of 10,672 parallel posts per language across 11 classes (Cohen's Kappa 0.91 English, 0.89 Bengali). Shows that transformer models process identical content differently across the two languages: they miss more suicidal and psychosis-related posts in Bengali, and Integrated Gradients, SHAP and LIME agree poorly on what drives predictions, especially for Bengali.</p>
         <a href="https://doi.org/10.1007/s40745-026-00743-y" target="_blank" rel="noopener">DOI: 10.1007/s40745-026-00743-y ↗</a>
         <a href="https://github.com/MoshiurRahmanFaisal/BMHD" target="_blank" rel="noopener">Dataset &amp; code ↗</a>
       </div>
@@ -629,7 +631,7 @@
       <div>
         <h3>Context-Aware Data Cleaning: Optimizing Bengali Text for Contextual Text Classification</h3>
         <div class="venue">SN Computer Science, 6(5), 422 · 2025</div>
-        <p><b class="me">Faisal, M.R.</b>, Fahad, A.R., Ridoy, S.Z., Sultana, J., Ria, Z.F., Rahman, M.H., Uddin, M.A., Rahman, R.M. Introduces a context-preserving data cleaning pipeline for Bengali, improving transformer model accuracy by up to 4% over traditional rule-based cleaning across four Bengali datasets.</p>
+        <p>Faisal, M.R., Fahad, A.R., Ridoy, S.Z., Sultana, J., Ria, Z.F., Rahman, M.H., Uddin, M.A., Rahman, R.M. Introduces a context-preserving data cleaning pipeline for Bengali, improving transformer model accuracy by up to 4% over traditional rule-based cleaning across four Bengali datasets.</p>
         <a href="https://doi.org/10.1007/s42979-025-03891-9" target="_blank" rel="noopener">DOI: 10.1007/s42979-025-03891-9 ↗</a>
       </div>
     </div>
@@ -639,7 +641,7 @@
       <div>
         <h3>Bengali &amp; Banglish: A Monolingual Dataset for Emotion Detection in Linguistically Diverse Contexts</h3>
         <div class="venue">Data in Brief, 55, 110760 · 2024</div>
-        <p><b class="me">Faisal, M.R.</b>, Shifa, A.M., Rahman, M.H., Uddin, M.A., Rahman, R.M. An 80,098-sample dataset spanning six emotion classes in Bengali and Banglish, with a 93.5% Cohen's Kappa annotation reliability score and BanglaBERT baselines.</p>
+        <p>Faisal, M.R., Shifa, A.M., Rahman, M.H., Uddin, M.A., Rahman, R.M. An 80,098-sample dataset spanning six emotion classes in Bengali and Banglish, with a 93.5% Cohen's Kappa annotation reliability score and BanglaBERT baselines.</p>
         <a href="https://doi.org/10.1016/j.dib.2024.110760" target="_blank" rel="noopener">DOI: 10.1016/j.dib.2024.110760 ↗</a>
       </div>
     </div>
@@ -649,7 +651,7 @@
       <div>
         <h3>Alternative non-BERT Model Choices for Textual Classification in Low-Resource Languages and Environments</h3>
         <div class="venue">3rd Workshop on Deep Learning for Low-Resource NLP (ACL) · 2022</div>
-        <p>Maheen, S.M., <b class="me">Faisal, M.R.</b>, Rahman, M.R., Karim, M.S. Proposes CPU-trainable CNN/RNN fusion-chain architectures that match or surpass BERT-family models in low-resource textual classification, with up to 100× fewer FLOPs.</p>
+        <p>Maheen, S.M., Faisal, M.R., Rahman, M.R., Karim, M.S. Proposes CPU-trainable CNN/RNN fusion-chain architectures that match or surpass BERT-family models in low-resource textual classification, with up to 100× fewer FLOPs.</p>
         <a href="https://doi.org/10.18653/v1/2022.deeplo-1.20" target="_blank" rel="noopener">DOI: 10.18653/v1/2022.deeplo-1.20 ↗</a>
       </div>
     </div>
@@ -714,23 +716,34 @@
     </div>
     <div class="cert-grid">
       <div class="cert-card spot">
-        <h4>Generative AI with Large Language Models</h4>
-        <div class="meta">2024</div>
-      </div>
-      <div class="cert-card spot">
         <h4>ETL and Data Pipelines with Shell, Airflow and Kafka</h4>
-        <div class="meta">IBM · 2024</div>
+        <div class="meta">IBM · Nov 2024</div>
       </div>
       <div class="cert-card spot">
         <h4>Inferential Statistics</h4>
-        <div class="meta">Duke University · 2024</div>
+        <div class="meta">Duke University · Oct 2024</div>
+      </div>
+      <div class="cert-card spot">
+        <h4>Machine Learning with Python</h4>
+        <div class="meta">Sep 2024</div>
+      </div>
+      <div class="cert-card spot">
+        <h4>Generative AI with Large Language Models</h4>
+        <div class="meta">Mar 2024</div>
+      </div>
+      <div class="cert-card spot">
+        <h4>SQL (Advanced) Certificate</h4>
+        <div class="meta">Mar 2024</div>
       </div>
       <div class="cert-card spot">
         <h4>Machine Learning Specialization</h4>
-        <div class="meta">2024</div>
+        <div class="meta">Jan 2024</div>
+      </div>
+      <div class="cert-card spot">
+        <h4>Python for Data Science, AI &amp; Development</h4>
+        <div class="meta">Jan 2024</div>
       </div>
     </div>
-    <p class="sec-note">Three more in Python, machine learning and advanced SQL are listed in my CV.</p>
   </section>
 
   <section id="recognition" class="wrap">
@@ -779,7 +792,7 @@
       <h2>Volunteering</h2>
       <p>Community &amp; leadership</p>
     </div>
-    <p class="sec-intro">14 volunteer roles across student leadership, technical organizing and design, mostly with IEEE. Former member of ACL and the IEEE Computer Society. I speak Bangla natively and work in English.</p>
+    <p class="sec-intro">14 volunteer roles in total across student leadership, technical organizing, and design, primarily with IEEE.</p>
     <div class="two-col">
       <div>
         <div class="edu-item">
@@ -799,6 +812,41 @@
           <div class="meta">IEEE Day 2021 · May 2021 – Dec 2021</div>
           <p>Led the graphics team in designing promotional materials, event banners, and social media graphics, improving the visibility and branding of IEEE Day 2021.</p>
         </div>
+        <div class="edu-item">
+          <h3>+ 11 more volunteer roles</h3>
+          <div class="meta">Full history on LinkedIn</div>
+          <p>Including organizing and committee roles with IEEE Computer Society and other student-led technical initiatives at North South University.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="affiliations" class="wrap">
+    <div class="sec-head">
+      <h2>Affiliations</h2>
+      <p>Memberships &amp; languages</p>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="edu-item">
+          <h3>Bangla</h3>
+          <div class="meta">Native or bilingual proficiency</div>
+        </div>
+        <div class="edu-item">
+          <h3>English</h3>
+          <div class="meta">Professional working proficiency</div>
+        </div>
+      </div>
+      <div>
+        <div class="edu-item">
+          <h3>Association for Computational Linguistics (ACL)</h3>
+          <div class="meta">Member · Jan 2022 – Dec 2022</div>
+        </div>
+        <div class="edu-item">
+          <h3>IEEE Computer Society</h3>
+          <div class="meta">Student Member · Mar 2019 – Dec 2022</div>
+        </div>
+      </div>
     </div>
   </section>
   </div>
@@ -862,7 +910,7 @@
   (function(){
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(reduce || !('IntersectionObserver' in window)) return;
-    const items = document.querySelectorAll('.news li, .stat-card, .xp, .skill-col, .proj, .pub, .talk, .cert-card, .edu-item, .award-item');
+    const items = document.querySelectorAll('.stat-card, .xp, .skill-col, .proj, .pub, .talk, .cert-card, .edu-item, .award-item');
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => {
         if(!en.isIntersecting) return;
